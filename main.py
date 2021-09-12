@@ -18,10 +18,11 @@ paddle_R = Paddle((350, 0))
 paddle_L = Paddle((-350, 0))
 
 screen.listen()
-screen.onkey(paddle_R.move_up, "Up")
-screen.onkey(paddle_R.move_down, "Down")
-screen.onkey(paddle_L.move_up, "w")
-screen.onkey(paddle_L.move_down, "s")
+#Controls definition
+screen.onkeypress(paddle_R.move_up, "Up")
+screen.onkeypress(paddle_R.move_down, "Down")
+screen.onkeypress(paddle_L.move_up, "a")
+screen.onkeypress(paddle_L.move_down, "z")
 
 #BALL, movement, wall collision and bounce, collision with paddle, paddle miss and score update
 ball = Ball()
@@ -40,7 +41,7 @@ while game_is_on:
     if ball.ycor() > 280 or ball.ycor() < -280:
         ball.bounce_y()
     #Detect collision with paddles
-    if ball.distance(paddle_R) < 50 and ball.xcor() > 320 or ball.distance(paddle_L) < 50 and ball.xcor() < -320:
+    if ball.distance(paddle_R) < 50 and ball.xcor() > 330 or ball.distance(paddle_L) < 50 and ball.xcor() < -330:
         ball.bounce_x()
     #Detect if R paddle misses
     if ball.xcor() > 400:
